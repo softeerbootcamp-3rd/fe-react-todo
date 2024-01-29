@@ -7,7 +7,11 @@ export default function TodoList({ todoList }) {
     <div className="todo-list-container">
       <ul className="todo-list">
         {todoList.map((data) => (
-          <TodoItem key={data.id.toString()} content={data.content} />
+          <TodoItem
+            key={data.id.toString()}
+            content={data.content}
+            id={data.id}
+          />
         ))}
       </ul>
     </div>

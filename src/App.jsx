@@ -13,7 +13,7 @@ function App() {
         return res.json();
       })
       .then((data) => setTodoList(data));
-  }, []);
+  }, [URL]);
 
   function updateTodoList(todo) {
     setTodoList([...todoList, todo]);
