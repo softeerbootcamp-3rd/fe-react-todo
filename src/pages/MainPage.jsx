@@ -100,8 +100,8 @@ const MainPage = () => {
         <TodoList
           key={todoItemId}
           isCompleted={isCompleted}
-          deleteTodo={() => {
-            deleteTodo(todoItemId, todoArr, setTodoArr);
+          deleteItem={() => {
+            deleteItem(todoItemId, todoArr, setTodoArr);
           }}
           completeItem={() => {
             completeItem(todoItemId);
