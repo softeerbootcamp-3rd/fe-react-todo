@@ -1,12 +1,13 @@
 import { useRef, useState } from "react";
+import { URL } from "../constants/constant";
 
-export default function Register() {
+export default function Register({ updateTodoList }) {
   const contentRef = useRef(null);
 
   function onSubmit(e) {
     e.preventDefault();
 
-    fetch("http://localhost:5174/todo/", {
+    fetch(URL, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -16,11 +17,11 @@ export default function Register() {
         content: contentRef.current.value,
         isDone: false,
       }),
-    }).then((res) => {
-      if (res.ok) {
-        console.log("POST SUCCESS!");
-      }
-    });
+    })
+      .then((res) => {
+        return res.json();
+      })
+      .then((data) => updateTodoList(data));
   }
 
   return (
