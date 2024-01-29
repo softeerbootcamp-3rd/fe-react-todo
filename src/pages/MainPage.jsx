@@ -18,7 +18,11 @@ const TodoMainWrapper = styled.div`
 import { addItem } from "../API/addItem";
 import { deleteTodo } from "../API/deleteTodo";
 import { useEffect, useState } from "react";
+<<<<<<< HEAD
 >>>>>>> 1dbb780 (feat#4_add_button_handler)
+=======
+import { completeItem } from "../API/completeItem";
+>>>>>>> 571e54f (feat#5_completeItem_handler)
 
 const TodoMainWrapper = styled.div`
   width: 100%;
@@ -98,6 +102,9 @@ const MainPage = () => {
           isCompleted={isCompleted}
           deleteTodo={() => {
             deleteTodo(todoItemId, todoArr, setTodoArr);
+          }}
+          completeItem={() => {
+            completeItem(todoItemId);
           }}
         >
 >>>>>>> 1dbb780 (feat#4_add_button_handler)
