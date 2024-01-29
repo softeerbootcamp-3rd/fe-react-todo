@@ -13,7 +13,6 @@ export default function Register({ updateTodoList }) {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        id: new Date().getTime(),
         content: contentRef.current.value,
         isDone: false,
       }),
