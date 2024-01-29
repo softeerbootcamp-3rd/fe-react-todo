@@ -1,3 +1,4 @@
+import { useState } from "react"
 import styles from "./styles.module.css"
 
 interface Props {
@@ -20,9 +21,23 @@ export default function TodoItem({
     onDelete(id)
   }
 
+  const [editMode, setEditMode] = useState(false)
+
   return (
     <li>
-      {content}
+      <input type='checkbox' />
+
+      {editMode ? (
+        <>
+          <input type='text' defaultValue={content} />
+          <button type='button'>저장</button>
+          <button type='button' onClick={() => setEditMode(false)}>
+            취소
+          </button>
+        </>
+      ) : (
+        <span onClick={() => setEditMode(true)}>{content}</span>
+      )}
       <button type='button' onClick={handleDelete}>
         삭제
       </button>
