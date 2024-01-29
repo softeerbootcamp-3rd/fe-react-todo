@@ -4,6 +4,7 @@ import Margin from "../component/Margin/Margin";
 import AddForm from "../component/AddForm/AddForm";
 import TodoList from "../component/TodoList/TodoList";
 <<<<<<< HEAD
+<<<<<<< HEAD
 import { addItem } from "../API/addItem";
 import { deleteItem } from "../API/deleteItem";
 import { useEffect, useState } from "react";
@@ -13,6 +14,11 @@ const TodoMainWrapper = styled.div`
   width: 100%;
   height: auto;
 =======
+=======
+import { addItem } from "../API/addItem";
+import { deleteTodo } from "../API/deleteTodo";
+import { useEffect, useState } from "react";
+>>>>>>> 1dbb780 (feat#4_add_button_handler)
 
 const TodoMainWrapper = styled.div`
   width: 100%;
@@ -52,6 +58,7 @@ const MainPage = () => {
       <Header>My Todo App</Header>
       <Margin height="50px" />
 <<<<<<< HEAD
+<<<<<<< HEAD
       <AddForm
         plusTodoText={plusTodoText}
         setPlusTodoText={setPlusTodoText}
@@ -77,6 +84,23 @@ const MainPage = () => {
       {TodoArr.map(({ todoItemId, todoText, isCompleted }) => (
         <TodoList key={todoItemId} isCompleted={isCompleted}>
 >>>>>>> 9c88a56 (feat#3_add_todolist_component)
+=======
+      <AddForm
+        setPlusTodoText={setPlusTodoText}
+        addBtnFun={() => {
+          addItem(plusTodoText, todoArr, setTodoArr);
+        }}
+      ></AddForm>
+      <Margin height="20px" />
+      {todoArr.map(({ todoItemId, todoText, isCompleted }) => (
+        <TodoList
+          key={todoItemId}
+          isCompleted={isCompleted}
+          deleteTodo={() => {
+            deleteTodo(todoItemId, todoArr, setTodoArr);
+          }}
+        >
+>>>>>>> 1dbb780 (feat#4_add_button_handler)
           {todoText}
         </TodoList>
       ))}
