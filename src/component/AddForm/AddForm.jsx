@@ -10,16 +10,18 @@ const FormStyle = styled.div`
 `;
 
 const AddForm = ({ addBtnFun, plusTodoText, setPlusTodoText }) => {
-  <>
-    <FormStyle>
-      <TodoInput
-        type="text"
-        plusTodoText={plusTodoText}
-        setPlusTodoText={setPlusTodoText}
-      ></TodoInput>
-      <AddButton addBtnFun={addBtnFun}>등록</AddButton>
-    </FormStyle>
-  </>;
+  return (
+    <>
+      <FormStyle>
+        <TodoInput
+          type="text"
+          plusTodoText={plusTodoText}
+          setPlusTodoText={setPlusTodoText}
+        ></TodoInput>
+        <AddButton addBtnFun={addBtnFun}>등록</AddButton>
+      </FormStyle>
+    </>
+  );
 };
 
 export default AddForm;

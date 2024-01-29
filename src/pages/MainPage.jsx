@@ -35,9 +35,8 @@ const TodoArr = [
 ];
 
 const MainPage = () => {
-  const [plusTodoText] = useState("");
+  const [plusTodoText, setPlusTodoText] = useState("");
   const [todoArr, setTodoArr] = useState(TodoArr);
-
   return (
     <TodoMainWrapper>
       <Margin height="30px" />
@@ -70,4 +69,3 @@ const MainPage = () => {
 };
 
 export default MainPage;
-
