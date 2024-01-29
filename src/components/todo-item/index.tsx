@@ -36,25 +36,39 @@ export default function TodoItem({
   const [editMode, setEditMode] = useState(false)
 
   return (
-    <li>
+    <li className={styles.todoItem}>
       <input
         type='checkbox'
         checked={completed}
+        className={styles.todoCompleted}
+        id={`todo-completed-${id}`}
         onChange={handleCompletedToggle}
       />
+      <label htmlFor={`todo-completed-${id}`}></label>
+
       {editMode ? (
+        <input
+          type='text'
+          defaultValue={content}
+          ref={inputRef}
+          autoFocus
+          onKeyDown={(e) => {
+            if (e.key === "Enter") {
+              handleSave()
+            }
+          }}
+        />
+      ) : (
+        <p
+          className={completed ? styles.completedContent : ""}
+          onClick={() => setEditMode(true)}
+        >
+          {content}
+        </p>
+      )}
+
+      {editMode && (
         <>
-          <input
-            type='text'
-            defaultValue={content}
-            ref={inputRef}
-            autoFocus
-            onKeyDown={(e) => {
-              if (e.key === "Enter") {
-                handleSave()
-              }
-            }}
-          />
           <button type='button' onClick={handleSave}>
             저장
           </button>
@@ -62,8 +76,6 @@ export default function TodoItem({
             취소
           </button>
         </>
-      ) : (
-        <span onClick={() => setEditMode(true)}>{content}</span>
       )}
       <button type='button' onClick={handleDelete}>
         삭제
