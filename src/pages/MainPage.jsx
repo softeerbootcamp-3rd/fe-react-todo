@@ -3,6 +3,7 @@ import Header from "../component/header/Header";
 import Margin from "../component/Margin/Margin";
 import AddForm from "../component/AddForm/AddForm";
 import TodoList from "../component/TodoList/TodoList";
+<<<<<<< HEAD
 import { addItem } from "../API/addItem";
 import { deleteItem } from "../API/deleteItem";
 import { useEffect, useState } from "react";
@@ -11,6 +12,13 @@ import { completeItem } from "../API/completeItem";
 const TodoMainWrapper = styled.div`
   width: 100%;
   height: auto;
+=======
+
+const TodoMainWrapper = styled.div`
+  width: 100%;
+  height: 500px;
+  background-color: yellow;
+>>>>>>> 9c88a56 (feat#3_add_todolist_component)
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -43,6 +51,7 @@ const MainPage = () => {
       <Margin height="30px" />
       <Header>My Todo App</Header>
       <Margin height="50px" />
+<<<<<<< HEAD
       <AddForm
         plusTodoText={plusTodoText}
         setPlusTodoText={setPlusTodoText}
@@ -62,6 +71,12 @@ const MainPage = () => {
             completeItem(todoItemId);
           }}
         >
+=======
+      <AddForm></AddForm>
+      <Margin height="20px" />
+      {TodoArr.map(({ todoItemId, todoText, isCompleted }) => (
+        <TodoList key={todoItemId} isCompleted={isCompleted}>
+>>>>>>> 9c88a56 (feat#3_add_todolist_component)
           {todoText}
         </TodoList>
       ))}
