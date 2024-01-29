@@ -20,13 +20,14 @@ const TodoText = styled.p`
   text-decoration: ${(props) => (props.putComplete ? "line-through" : "none")};
 `;
 
-const TodoList = ({ children, isCompleted, deleteTodo }) => {
+const TodoList = ({ children, isCompleted, deleteTodo, completeItem }) => {
   const [putComplete, setPutComplete] = useState(isCompleted);
   return (
     <TodoListBox>
       <TodoText
         putComplete={putComplete}
         onClick={() => {
+          completeItem();
           setPutComplete(!putComplete);
         }}
       >

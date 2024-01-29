@@ -6,6 +6,7 @@ import TodoList from "../component/TodoList/TodoList";
 import { addItem } from "../API/addItem";
 import { deleteTodo } from "../API/deleteTodo";
 import { useEffect, useState } from "react";
+import { completeItem } from "../API/completeItem";
 
 const TodoMainWrapper = styled.div`
   width: 100%;
@@ -56,6 +57,9 @@ const MainPage = () => {
           isCompleted={isCompleted}
           deleteTodo={() => {
             deleteTodo(todoItemId, todoArr, setTodoArr);
+          }}
+          completeItem={() => {
+            completeItem(todoItemId);
           }}
         >
           {todoText}
