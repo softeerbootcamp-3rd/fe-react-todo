@@ -13,10 +13,10 @@ const AddButtonStyle = styled.button`
   border: none;
 `;
 
-const AddButton = ({ children }) => {
+const AddButton = () => {
   return (
     <>
-      <AddButtonStyle>{children}</AddButtonStyle>
+      <AddButtonStyle>등록</AddButtonStyle>
     </>
   );
 };

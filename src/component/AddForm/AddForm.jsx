@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import AddButton from "./component/AddButton/AddButton";
-import TodoInput from "./component/TodoInput/TodoInput";
+import AddButton from "../button/AddButton/AddButton";
+import TodoInput from "../Input/TodoInput/TodoInput";
 
 const FormStyle = styled.div`
   width: 397px;
