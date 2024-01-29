@@ -17,8 +17,9 @@ export default function TodoItem({
 }: Props) {
   // TODO input state
   const handleDelete = () => {
-    // TODO onDelete
+    onDelete(id)
   }
+
   return (
     <li>
       {content}

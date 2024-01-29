@@ -31,7 +31,9 @@ export default function TodoContainer() {
     form.reset()
   }
 
-  const handleDelete = (id: string) => {}
+  const handleDelete = (id: string) => {
+    setItems((prev) => prev.filter((item) => item.id !== id))
+  }
 
   const handleSave = (id: string) => {}
 
