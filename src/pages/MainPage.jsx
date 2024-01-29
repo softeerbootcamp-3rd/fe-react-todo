@@ -45,9 +45,10 @@ const MainPage = () => {
       <Header>My Todo App</Header>
       <Margin height="50px" />
       <AddForm
+        plusTodoText={plusTodoText}
         setPlusTodoText={setPlusTodoText}
         addBtnFun={() => {
-          addItem(plusTodoText, todoArr, setTodoArr);
+          addItem(plusTodoText, todoArr, setTodoArr, setPlusTodoText);
         }}
       ></AddForm>
       <Margin height="20px" />

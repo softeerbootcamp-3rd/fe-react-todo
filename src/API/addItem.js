@@ -1,4 +1,13 @@
-export async function addItem(plusTodoText, todoArr, setTodoArr) {
+export async function addItem(
+  plusTodoText,
+  todoArr,
+  setTodoArr,
+  setPlusTodoText
+) {
+  if (plusTodoText.trim().length === 0) {
+    alert("할 일을 입력해주세요.");
+    return;
+  }
   const isSuccess = await new Promise((resolve) => {
     setTimeout(() => {
       resolve(true);
@@ -13,4 +22,5 @@ export async function addItem(plusTodoText, todoArr, setTodoArr) {
       })
     );
   }
+  setPlusTodoText("");
 }
