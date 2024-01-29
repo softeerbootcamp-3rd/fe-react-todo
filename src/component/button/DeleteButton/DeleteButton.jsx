@@ -14,8 +14,16 @@ const DeleteButtonStyle = styled.button`
   padding-right: 1px;
 `;
 
-const DeleteButton = () => {
-  return <DeleteButtonStyle>삭제</DeleteButtonStyle>;
+const DeleteButton = ({ deleteFun }) => {
+  return (
+    <DeleteButtonStyle
+      onClick={() => {
+        deleteFun();
+      }}
+    >
+      삭제
+    </DeleteButtonStyle>
+  );
 };
 
 export default DeleteButton;

@@ -10,10 +10,17 @@ const TodoInputStyle = styled.input`
   border: 1px solid black;
 `;
 
-const TodoInput = () => {
+const TodoInput = ({ setPlusTodoText }) => {
+  const todoInputChange = (e) => {
+    setPlusTodoText(e.target.value);
+  };
+
   return (
     <>
-      <TodoInputStyle placeholder="할일을 입력하세요"></TodoInputStyle>
+      <TodoInputStyle
+        placeholder="할일을 입력하세요"
+        onChange={todoInputChange}
+      ></TodoInputStyle>
     </>
   );
 };

@@ -13,10 +13,16 @@ const AddButtonStyle = styled.button`
   border: none;
 `;
 
-const AddButton = () => {
+const AddButton = ({ addBtnFun }) => {
   return (
     <>
-      <AddButtonStyle>등록</AddButtonStyle>
+      <AddButtonStyle
+        onClick={() => {
+          addBtnFun();
+        }}
+      >
+        등록
+      </AddButtonStyle>
     </>
   );
 };

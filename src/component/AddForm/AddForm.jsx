@@ -9,12 +9,12 @@ const FormStyle = styled.div`
   justify-content: space-between;
 `;
 
-const AddForm = () => {
+const AddForm = ({ setPlusTodoText, addBtnFun }) => {
   return (
     <>
       <FormStyle>
-        <TodoInput type="text"></TodoInput>
-        <AddButton>등록</AddButton>
+        <TodoInput type="text" setPlusTodoText={setPlusTodoText}></TodoInput>
+        <AddButton addBtnFun={addBtnFun}>등록</AddButton>
       </FormStyle>
     </>
   );

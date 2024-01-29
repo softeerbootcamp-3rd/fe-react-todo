@@ -3,6 +3,9 @@ import Header from "../component/header/Header";
 import Margin from "../component/Margin/Margin";
 import AddForm from "../component/AddForm/AddForm";
 import TodoList from "../component/TodoList/TodoList";
+import { addItem } from "../API/addItem";
+import { deleteTodo } from "../API/deleteTodo";
+import { useEffect, useState } from "react";
 
 const TodoMainWrapper = styled.div`
   width: 100%;
@@ -32,15 +35,29 @@ const TodoArr = [
 ];
 
 const MainPage = () => {
+  const [plusTodoText, setPlusTodoText] = useState("");
+  const [todoArr, setTodoArr] = useState(TodoArr);
+
   return (
     <TodoMainWrapper>
       <Margin height="30px" />
       <Header>My Todo App</Header>
       <Margin height="50px" />
-      <AddForm></AddForm>
+      <AddForm
+        setPlusTodoText={setPlusTodoText}
+        addBtnFun={() => {
+          addItem(plusTodoText, todoArr, setTodoArr);
+        }}
+      ></AddForm>
       <Margin height="20px" />
-      {TodoArr.map(({ todoItemId, todoText, isCompleted }) => (
-        <TodoList key={todoItemId} isCompleted={isCompleted}>
+      {todoArr.map(({ todoItemId, todoText, isCompleted }) => (
+        <TodoList
+          key={todoItemId}
+          isCompleted={isCompleted}
+          deleteTodo={() => {
+            deleteTodo(todoItemId, todoArr, setTodoArr);
+          }}
+        >
           {todoText}
         </TodoList>
       ))}

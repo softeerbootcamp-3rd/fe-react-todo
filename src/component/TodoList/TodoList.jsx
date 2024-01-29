@@ -20,7 +20,7 @@ const TodoText = styled.p`
   text-decoration: ${(props) => (props.putComplete ? "line-through" : "none")};
 `;
 
-const TodoList = ({ children, isCompleted }) => {
+const TodoList = ({ children, isCompleted, deleteTodo }) => {
   const [putComplete, setPutComplete] = useState(isCompleted);
   return (
     <TodoListBox>
@@ -32,7 +32,7 @@ const TodoList = ({ children, isCompleted }) => {
       >
         {children}
       </TodoText>
-      <DeleteButton />
+      <DeleteButton deleteFun={deleteTodo} />
     </TodoListBox>
   );
 };
