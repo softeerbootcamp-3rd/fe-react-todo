@@ -1,0 +1,7 @@
+.form {
+  display: flex;
+  gap: 10px;
+  & > input[name="todo-input"] {
+    flex: 1 1 0;
+  }
+}

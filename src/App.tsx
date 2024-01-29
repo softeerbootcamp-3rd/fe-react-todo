@@ -1,13 +1,12 @@
-import "./App.css"
 import Header from "./components/header"
 import TodoContainer from "./components/todo-container"
 
 function App() {
   return (
-    <div>
+    <main>
       <Header />
       <TodoContainer />
-    </div>
+    </main>
   )
 }
 

@@ -7,8 +7,8 @@ interface Props {
 
 export default function TodoForm({ onSubmit }: Props) {
   return (
-    <form onSubmit={onSubmit}>
-      <input type='text' name='todo-input' />
+    <form className={styles.form} onSubmit={onSubmit}>
+      <input type='text' placeholder='할 일을 입력하세요.' name='todo-input' />
       <button type='submit'>제출</button>
     </form>
   )
