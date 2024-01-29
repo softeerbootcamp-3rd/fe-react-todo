@@ -18,25 +18,30 @@ export default function TodoItem({
   onSave,
 }: Props) {
   const inputRef = useRef<HTMLInputElement>(null)
-  // TODO input state
+
   const handleDelete = () => {
     onDelete(id)
   }
 
   const handleSave = () => {
     if (!inputRef.current?.value.trim()) return
-
     onSave({ id, completed, content: inputRef.current.value })
-
     setEditMode(false)
+  }
+
+  const handleCompletedToggle = () => {
+    onSave({ id, completed: !completed, content })
   }
 
   const [editMode, setEditMode] = useState(false)
 
   return (
     <li>
-      <input type='checkbox' />
-
+      <input
+        type='checkbox'
+        checked={completed}
+        onChange={handleCompletedToggle}
+      />
       {editMode ? (
         <>
           <input
