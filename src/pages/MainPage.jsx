@@ -4,7 +4,7 @@ import Margin from "../component/Margin/Margin";
 import AddForm from "../component/AddForm/AddForm";
 import TodoList from "../component/TodoList/TodoList";
 import { addItem } from "../API/addItem";
-import { deleteTodo } from "../API/deleteTodo";
+import { deleteItem } from "../API/deleteItem";
 import { useEffect, useState } from "react";
 import { completeItem } from "../API/completeItem";
 
@@ -55,8 +55,8 @@ const MainPage = () => {
         <TodoList
           key={todoItemId}
           isCompleted={isCompleted}
-          deleteTodo={() => {
-            deleteTodo(todoItemId, todoArr, setTodoArr);
+          deleteItem={() => {
+            deleteItem(todoItemId, todoArr, setTodoArr);
           }}
           completeItem={() => {
             completeItem(todoItemId);

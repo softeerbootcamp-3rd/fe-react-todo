@@ -1,4 +1,4 @@
-export async function deleteTodo(todoItemId, todoArr, setTodoArr) {
+export async function deleteItem(todoItemId, todoArr, setTodoArr) {
   let isSuccess = await new Promise((resolve) => {
     setTimeout(() => {
       resolve(true);
