@@ -2,16 +2,11 @@ import { FormEventHandler, useState } from "react"
 import TodoForm from "../todo-form"
 import TodoList from "../todo-list"
 import styles from "./styles.module.css"
+import { type Item } from "./types"
 import TodoItem from "../todo-item"
 
-interface TodoItem {
-  id: string
-  content: string
-  completed: boolean
-}
-
 export default function TodoContainer() {
-  const [items, setItems] = useState<TodoItem[]>([])
+  const [items, setItems] = useState<Item[]>([])
 
   const handleSubmit: FormEventHandler<HTMLFormElement> = (e) => {
     e.preventDefault()
@@ -35,7 +30,14 @@ export default function TodoContainer() {
     setItems((prev) => prev.filter((item) => item.id !== id))
   }
 
-  const handleSave = (id: string) => {}
+  const handleSave = (newItem: Item) => {
+    setItems((prev) => {
+      const index = prev.findIndex(({ id }) => newItem.id === id)
+      const newItems = [...prev]
+      newItems.splice(index, 1, newItem)
+      return newItems
+    })
+  }
 
   return (
     <div>
