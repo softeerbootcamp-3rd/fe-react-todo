@@ -1,19 +1,30 @@
 import styles from "./styles.module.css"
 
 interface Props {
+  id: string
   content: string
-  checked: boolean
-  onDelete: () => void
-  onEdit: () => void
-  onSave: () => void
+  completed: boolean
+  onDelete: (id: string) => void
+  onSave: (id: string) => void
 }
 
 export default function TodoItem({
+  id,
   content,
-  checked,
+  completed,
   onDelete,
-  onEdit,
   onSave,
 }: Props) {
-  return <li>{content}</li>
+  // TODO input state
+  const handleDelete = () => {
+    // TODO onDelete
+  }
+  return (
+    <li>
+      {content}
+      <button type='button' onClick={handleDelete}>
+        삭제
+      </button>
+    </li>
+  )
 }
