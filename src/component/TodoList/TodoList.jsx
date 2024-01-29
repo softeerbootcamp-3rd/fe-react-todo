@@ -15,8 +15,8 @@ const TodoListBox = styled.div`
 
 const TodoText = styled.p`
   font-size: 18px;
-  font-family: "Pretendard-Regular";
-  color: black;
+  font-family: "Pretendard-Medium";
+  color: #7e6363;
   text-decoration: ${(props) => (props.putComplete ? "line-through" : "none")};
 `;
 

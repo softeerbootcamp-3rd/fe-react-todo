@@ -3,8 +3,8 @@ import styled from "styled-components";
 const DeleteButtonStyle = styled.button`
   width: 45px;
   height: 28px;
-  background-color: #6191bf;
-  color: #fcfdfb;
+  background-color: #7e6363;
+  color: white;
   font-size: 14px;
   font-family: "Pretendard-Bold";
   border-radius: 8px;
@@ -12,6 +12,9 @@ const DeleteButtonStyle = styled.button`
   text-align: center;
   line-height: 28px;
   padding-right: 1px;
+  &:hover {
+    background-color: #ebd9b4;
+  }
 `;
 
 const DeleteButton = ({ deleteFun }) => {

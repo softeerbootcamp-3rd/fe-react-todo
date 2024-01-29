@@ -5,8 +5,8 @@ const GlobalStyle = createGlobalStyle`
   ${reset}
 
   html, body, #root {
-      width: 100vw;
-      height: calc(var(--vh, 1vh) * 100);
+    width: 100vw;
+    height: calc(var(--vh, 1vh) * 100);
   }
 
   

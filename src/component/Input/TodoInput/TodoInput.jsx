@@ -3,11 +3,12 @@ import styled from "styled-components";
 const TodoInputStyle = styled.input`
   width: 324px;
   height: 44px;
-  font-family: "Pretendard-regular";
+  font-family: "Pretendard-Medium";
   font-size: 20px;
   padding-left: 20px;
   box-sizing: border-box;
-  border: 1px solid black;
+  border: 1px solid #7e6363;
+  border-radius: 8px;
 `;
 
 const TodoInput = ({ plusTodoText, setPlusTodoText }) => {
