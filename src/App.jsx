@@ -1,16 +1,28 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Header from "./component/Header";
 import Register from "./component/Register";
 import TodoList from "./component/TodoList";
+import { URL } from "./constants/constant";
 
 function App() {
-  const [count, setCount] = useState(0);
+  const [todoList, setTodoList] = useState([]);
 
+  useEffect(() => {
+    fetch(URL)
+      .then((res) => {
+        return res.json();
+      })
+      .then((data) => setTodoList(data));
+  }, []);
+
+  function updateTodoList(todo) {
+    setTodoList([...todoList, todo]);
+  }
   return (
     <>
       <Header />
-      <Register />
-      <TodoList />
+      <Register updateTodoList={updateTodoList} />
+      <TodoList todoList={todoList} />
     </>
   );
 }
