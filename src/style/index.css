@@ -92,7 +92,6 @@ body {
   border-radius: 16px;
   background: #fefefe;
   box-shadow: 0px 1px 4px 0px rgba(110, 128, 145, 0.24);
-  border: 2px gray;
   height: 52px;
   align-items: center;
   padding: 8px 16px;
@@ -106,4 +105,12 @@ body {
 .todo-item__delete-button {
   background: #f00;
   color: black;
+}
+
+.isDone {
+  background: rgba(119, 119, 119, 0.195);
+
+  & > p {
+    text-decoration: line-through;
+  }
 }

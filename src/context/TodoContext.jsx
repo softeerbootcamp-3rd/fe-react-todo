@@ -5,11 +5,13 @@ export const TodoContext = createContext({
   todoList: [],
   addTodo: () => {},
   deleteTodo: () => {},
+  putTodo: () => {},
 });
 
 export default function ToDoContextProvider({ children }) {
   const [todoList, setTodoList] = useState([]);
 
+  // 초기 데이터 Get
   useEffect(() => {
     fetch(URL)
       .then((res) => {
@@ -20,6 +22,7 @@ export default function ToDoContextProvider({ children }) {
       });
   }, [URL]);
 
+  // todo POST
   function postTodoList(content) {
     fetch(URL, {
       method: "POST",
@@ -37,17 +40,39 @@ export default function ToDoContextProvider({ children }) {
       .then((data) => setTodoList([...todoList, data]));
   }
 
+  // todo DELETE
   function deleteTodo(id) {
     fetch(URL + `${id}`, { method: "DELETE" }).then((res) => {
       setTodoList(todoList.filter((data) => data.id !== id));
     });
   }
 
+  function putTodo(todo) {
+    fetch(URL + todo.id, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(todo),
+    })
+      .then((res) => {
+        return res.json();
+      })
+      .then((data) => {
+        const newTodoList = todoList.map((item) =>
+          item.id === data.id ? data : item
+        );
+        setTodoList(newTodoList);
+      });
+  }
+
   const ctxValue = {
     todoList: todoList,
     addTodo: postTodoList,
     deleteTodo: deleteTodo,
+    putTodo: putTodo,
   };
+
   return (
     <TodoContext.Provider value={ctxValue}>{children}</TodoContext.Provider>
   );
