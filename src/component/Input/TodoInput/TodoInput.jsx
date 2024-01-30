@@ -1,4 +1,7 @@
+import { useContext } from "react";
 import styled from "styled-components";
+
+import { PlusTodoText, SetPlusTodoText } from "../../../pages/MainPage";
 
 const TodoInputStyle = styled.input`
   width: 324px;
@@ -11,7 +14,10 @@ const TodoInputStyle = styled.input`
   border-radius: 8px;
 `;
 
-const TodoInput = ({ plusTodoText, setPlusTodoText }) => {
+const TodoInput = () => {
+  const plusTodoText = useContext(PlusTodoText);
+  const setPlusTodoText = useContext(SetPlusTodoText);
+
   const todoInputChange = (e) => {
     setPlusTodoText(e.target.value);
   };

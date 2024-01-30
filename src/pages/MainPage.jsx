@@ -5,17 +5,12 @@ import AddForm from "../component/AddForm/AddForm";
 import TodoList from "../component/TodoList/TodoList";
 import { addItem } from "../API/addItem";
 import { deleteItem } from "../API/deleteItem";
-import { useEffect, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import { completeItem } from "../API/completeItem";
 import { setAllItem } from "../API/setAllItem";
 
-const TodoMainWrapper = styled.div`
-  width: 100%;
-  height: auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`;
+export const PlusTodoText = createContext();
+export const SetPlusTodoText = createContext();
 
 const MainPage = () => {
   const [plusTodoText, setPlusTodoText] = useState("");
@@ -30,13 +25,15 @@ const MainPage = () => {
       <Margin height="30px" />
       <Header>My Todo App</Header>
       <Margin height="50px" />
-      <AddForm
-        plusTodoText={plusTodoText}
-        setPlusTodoText={setPlusTodoText}
-        addBtnFun={() => {
-          addItem(plusTodoText, todoArr, setTodoArr, setPlusTodoText);
-        }}
-      ></AddForm>
+      <PlusTodoText.Provider value={plusTodoText}>
+        <SetPlusTodoText.Provider value={setPlusTodoText}>
+          <AddForm
+            addBtnFun={() => {
+              addItem(plusTodoText, todoArr, setTodoArr, setPlusTodoText);
+            }}
+          ></AddForm>
+        </SetPlusTodoText.Provider>
+      </PlusTodoText.Provider>
       <Margin height="20px" />
       {todoArr.map(({ todoItemId, todoText, isCompleted }) => (
         <TodoList
@@ -57,3 +54,11 @@ const MainPage = () => {
 };
 
 export default MainPage;
+
+const TodoMainWrapper = styled.div`
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
