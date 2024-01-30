@@ -1,16 +1,8 @@
-import { useState } from "react";
-import { URL } from "../constants/constant";
+import { useContext, useState } from "react";
+import { TodoContext } from "../context/TodoContext";
 
 export default function TodoItem({ id, content }) {
-  const [isNull, setIsNull] = useState(false);
-
-  function deleteTodo(id) {
-    fetch(URL + `${id}`, { method: "DELETE" }).then((rest) => setIsNull(true));
-  }
-
-  if (isNull) {
-    return null;
-  }
+  const { deleteTodo } = useContext(TodoContext);
 
   return (
     <li className="todo-item">

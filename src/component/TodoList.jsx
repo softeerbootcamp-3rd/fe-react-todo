@@ -1,8 +1,11 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 
 import TodoItem from "./TodoItem";
+import { TodoContext } from "../context/TodoContext";
 
-export default function TodoList({ todoList }) {
+export default function TodoList() {
+  const { todoList } = useContext(TodoContext);
+
   return (
     <div className="todo-list-container">
       <ul className="todo-list">
