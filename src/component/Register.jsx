@@ -8,6 +8,7 @@ export default function Register() {
   function onSubmit(e) {
     e.preventDefault();
     addTodo(contentRef.current.value);
+    contentRef.current.value = "";
   }
 
   return (
