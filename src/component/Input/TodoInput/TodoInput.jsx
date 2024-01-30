@@ -11,13 +11,11 @@ const TodoInput = () => {
   };
 
   return (
-    <>
-      <TodoInputStyle
-        value={plusTodoText}
-        placeholder="할일을 입력하세요"
-        onChange={todoInputChange}
-      ></TodoInputStyle>
-    </>
+    <TodoInputStyle
+      value={plusTodoText}
+      placeholder="할일을 입력하세요"
+      onChange={todoInputChange}
+    ></TodoInputStyle>
   );
 };
 

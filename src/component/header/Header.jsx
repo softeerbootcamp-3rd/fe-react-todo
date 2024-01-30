@@ -1,11 +1,7 @@
 import styled from "styled-components";
 
 const Header = ({ children }) => {
-  return (
-    <>
-      <Title>{children}</Title>
-    </>
-  );
+  return <Title>{children}</Title>;
 };
 
 export default Header;
