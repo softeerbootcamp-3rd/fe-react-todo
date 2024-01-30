@@ -7,6 +7,7 @@ import { addItem } from "../API/addItem";
 import { deleteItem } from "../API/deleteItem";
 import { useEffect, useState } from "react";
 import { completeItem } from "../API/completeItem";
+import { setAllItem } from "../API/setAllItem";
 
 const TodoMainWrapper = styled.div`
   width: 100%;
@@ -16,27 +17,14 @@ const TodoMainWrapper = styled.div`
   align-items: center;
 `;
 
-const TodoArr = [
-  {
-    todoItemId: 1,
-    todoText: "자바스크립트 공부하기",
-    isCompleted: false,
-  },
-  {
-    todoItemId: 2,
-    todoText: "자바스크립트 공부하기",
-    isCompleted: false,
-  },
-  {
-    todoItemId: 3,
-    todoText: "자바스크립트 공부하기",
-    isCompleted: true,
-  },
-];
-
 const MainPage = () => {
   const [plusTodoText, setPlusTodoText] = useState("");
-  const [todoArr, setTodoArr] = useState(TodoArr);
+  const [todoArr, setTodoArr] = useState([]);
+
+  useEffect(() => {
+    setAllItem(setTodoArr);
+  }, []);
+
   return (
     <TodoMainWrapper>
       <Margin height="30px" />
@@ -58,7 +46,7 @@ const MainPage = () => {
             deleteItem(todoItemId, todoArr, setTodoArr);
           }}
           completeItem={() => {
-            completeItem(todoItemId);
+            completeItem(todoItemId, isCompleted);
           }}
         >
           {todoText}

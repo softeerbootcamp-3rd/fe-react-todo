@@ -1,3 +1,4 @@
+import { VITE_APP_KEY } from "./apiKey";
 export async function addItem(
   plusTodoText,
   todoArr,
@@ -8,15 +9,22 @@ export async function addItem(
     alert("할 일을 입력해주세요.");
     return;
   }
-  const isSuccess = await new Promise((resolve) => {
-    setTimeout(() => {
-      resolve(true);
-    }, 500);
+  const id = Date.now();
+  const isSuccess = await fetch(`${VITE_APP_KEY}/todo`, {
+    method: "POST",
+    body: JSON.stringify({
+      id: id.toString(),
+      todoText: plusTodoText,
+      isCompleted: false,
+    }),
+    headers: {
+      "Content-Type": "application/json",
+    },
   });
   if (isSuccess) {
     setTodoArr(
       todoArr.concat({
-        todoItemId: Date.now(),
+        todoItemId: id,
         todoText: plusTodoText,
         isCompleted: false,
       })
