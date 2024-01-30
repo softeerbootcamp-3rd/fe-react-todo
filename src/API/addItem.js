@@ -29,6 +29,8 @@ export async function addItem(
         isCompleted: false,
       })
     );
+  } else {
+    alert("서버 요청에 실패했습니다.");
   }
   setPlusTodoText("");
 }

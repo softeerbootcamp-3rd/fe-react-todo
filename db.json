@@ -3,6 +3,16 @@
     {
       "id": "1706578780014",
       "todoText": "jjkkhk",
+      "isCompleted": true
+    },
+    {
+      "id": "1706579849272",
+      "todoText": "gdgdg",
+      "isCompleted": false
+    },
+    {
+      "id": "1706579851216",
+      "todoText": "nvnvnv",
       "isCompleted": false
     }
   ]
