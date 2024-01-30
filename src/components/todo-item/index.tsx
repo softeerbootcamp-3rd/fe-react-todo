@@ -19,6 +19,8 @@ export default function TodoItem({
 }: Props) {
   const inputRef = useRef<HTMLInputElement>(null)
 
+  const [editMode, setEditMode] = useState(false)
+
   const handleDelete = () => {
     onDelete(id)
   }
@@ -32,8 +34,6 @@ export default function TodoItem({
   const handleCompletedToggle = () => {
     onSave({ id, completed: !completed, content })
   }
-
-  const [editMode, setEditMode] = useState(false)
 
   return (
     <li className={styles.todoItem}>
