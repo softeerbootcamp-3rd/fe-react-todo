@@ -14,6 +14,7 @@ export default function TodoList() {
             key={data.id.toString()}
             content={data.content}
             id={data.id}
+            isDone={data.isDone}
           />
         ))}
       </ul>
