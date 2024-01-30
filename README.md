@@ -141,28 +141,3 @@
   ]
 }
 ```
-
-
-### API 문서
-
-```jsx
-{
-	"todo": [
-    {
-      "id": "311c",
-      "content": "할일1",
-      "isDone": false
-    },
-    {
-      "id": "3416",
-      "content": "할일2",
-      "isDone": false
-    },
-    {
-      "id": "9c79",
-      "content": "할일3",
-      "isDone": false
-    }
-  ]
-}
-```
