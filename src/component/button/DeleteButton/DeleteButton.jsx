@@ -1,5 +1,19 @@
 import styled from "styled-components";
 
+const DeleteButton = ({ deleteFun }) => {
+  return (
+    <DeleteButtonStyle
+      onClick={() => {
+        deleteFun();
+      }}
+    >
+      삭제
+    </DeleteButtonStyle>
+  );
+};
+
+export default DeleteButton;
+
 const DeleteButtonStyle = styled.button`
   width: 45px;
   height: 28px;
@@ -16,17 +30,3 @@ const DeleteButtonStyle = styled.button`
     background-color: #ebd9b4;
   }
 `;
-
-const DeleteButton = ({ deleteFun }) => {
-  return (
-    <DeleteButtonStyle
-      onClick={() => {
-        deleteFun();
-      }}
-    >
-      삭제
-    </DeleteButtonStyle>
-  );
-};
-
-export default DeleteButton;

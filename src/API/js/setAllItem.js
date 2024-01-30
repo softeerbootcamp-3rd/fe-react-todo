@@ -1,4 +1,4 @@
-import { VITE_APP_KEY } from "./apiKey";
+import { VITE_APP_KEY } from "../key/apiKey";
 
 export const setAllItem = async (setTodoArr) => {
   await fetch(`${VITE_APP_KEY}/todo`)

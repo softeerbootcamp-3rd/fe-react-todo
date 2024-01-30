@@ -3,11 +3,11 @@ import Header from "../component/header/Header";
 import Margin from "../component/Margin/Margin";
 import AddForm from "../component/AddForm/AddForm";
 import TodoList from "../component/TodoList/TodoList";
-import { addItem } from "../API/addItem";
-import { deleteItem } from "../API/deleteItem";
+import { addItem } from "../API/js/addItem";
+import { deleteItem } from "../API/js/deleteItem";
 import { createContext, useEffect, useState } from "react";
-import { completeItem } from "../API/completeItem";
-import { setAllItem } from "../API/setAllItem";
+import { completeItem } from "../API/js/completeItem";
+import { setAllItem } from "../API/js/setAllItem";
 
 export const PlusTodoText = createContext();
 export const SetPlusTodoText = createContext();
