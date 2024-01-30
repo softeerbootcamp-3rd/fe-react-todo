@@ -1,0 +1,42 @@
+@import "../styles/variables.scss";
+
+.todoList {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  height: calc(100% - 50px);
+  margin-top: 20px;
+  overflow: scroll;
+  scrollbar-width: none; /* 파이어폭스 */
+  /* ( 크롬, 사파리, 오페라, 엣지 ) 동작 */
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.todoItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-shrink: 0;
+  width: 100%;
+  height: fit-content;
+  min-height: 50px;
+  border-bottom: 1px solid #e0ebd5;
+}
+
+.todoContent {
+  width: 80%;
+}
+
+.complete {
+  text-decoration: line-through;
+  opacity: 0.4;
+}
+
+.deleteTodo {
+  @include btn(12%, 30px, #6191bf, regular);
+}
