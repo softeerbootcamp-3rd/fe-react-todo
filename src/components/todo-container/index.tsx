@@ -1,12 +1,12 @@
-import { FormEventHandler, useState } from "react"
+import { FormEventHandler, useReducer } from "react"
 import TodoForm from "../todo-form"
 import TodoList from "../todo-list"
-import styles from "./styles.module.css"
 import { type Item } from "./types"
 import TodoItem from "../todo-item"
+import { todoReducer } from "../../reducers/todo-reducer"
 
 export default function TodoContainer() {
-  const [items, setItems] = useState<Item[]>([])
+  const [items, dispatch] = useReducer(todoReducer, [])
 
   const handleSubmit: FormEventHandler<HTMLFormElement> = (e) => {
     e.preventDefault()
@@ -21,22 +21,17 @@ export default function TodoContainer() {
       content,
       completed: false,
     }
-    setItems((prev) => [newItem, ...prev])
+    dispatch({ type: "ADD", payload: { item: newItem } })
 
     form.reset()
   }
 
   const handleDelete = (id: string) => {
-    setItems((prev) => prev.filter((item) => item.id !== id))
+    dispatch({ type: "DELETE", payload: { id } })
   }
 
   const handleSave = (newItem: Item) => {
-    setItems((prev) => {
-      const index = prev.findIndex(({ id }) => newItem.id === id)
-      const newItems = [...prev]
-      newItems.splice(index, 1, newItem)
-      return newItems
-    })
+    dispatch({ type: "EDIT", payload: { item: newItem } })
   }
 
   return (
