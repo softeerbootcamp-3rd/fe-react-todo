@@ -1,26 +1,14 @@
-import { useRef, useState } from "react";
-import { URL } from "../constants/constant";
+import { useContext, useRef } from "react";
+import { TodoContext } from "../context/TodoContext";
 
-export default function Register({ updateTodoList }) {
+export default function Register() {
   const contentRef = useRef(null);
+  const { addTodo } = useContext(TodoContext);
 
   function onSubmit(e) {
     e.preventDefault();
-
-    fetch(URL, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        content: contentRef.current.value,
-        isDone: false,
-      }),
-    })
-      .then((res) => {
-        return res.json();
-      })
-      .then((data) => updateTodoList(data));
+    addTodo(contentRef.current.value);
+    contentRef.current.value = "";
   }
 
   return (
