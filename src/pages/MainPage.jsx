@@ -3,52 +3,37 @@ import Header from "../component/header/Header";
 import Margin from "../component/Margin/Margin";
 import AddForm from "../component/AddForm/AddForm";
 import TodoList from "../component/TodoList/TodoList";
-import { addItem } from "../API/addItem";
-import { deleteItem } from "../API/deleteItem";
-import { useEffect, useState } from "react";
-import { completeItem } from "../API/completeItem";
+import { addItem } from "../API/js/addItem";
+import { deleteItem } from "../API/js/deleteItem";
+import { createContext, useEffect, useState } from "react";
+import { completeItem } from "../API/js/completeItem";
+import { setAllItem } from "../API/js/setAllItem";
 
-const TodoMainWrapper = styled.div`
-  width: 100%;
-  height: auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`;
-
-const TodoArr = [
-  {
-    todoItemId: 1,
-    todoText: "자바스크립트 공부하기",
-    isCompleted: false,
-  },
-  {
-    todoItemId: 2,
-    todoText: "자바스크립트 공부하기",
-    isCompleted: false,
-  },
-  {
-    todoItemId: 3,
-    todoText: "자바스크립트 공부하기",
-    isCompleted: true,
-  },
-];
+export const PlusTodoText = createContext();
+export const SetPlusTodoText = createContext();
 
 const MainPage = () => {
   const [plusTodoText, setPlusTodoText] = useState("");
-  const [todoArr, setTodoArr] = useState(TodoArr);
+  const [todoArr, setTodoArr] = useState([]);
+
+  useEffect(() => {
+    setAllItem(setTodoArr);
+  }, []);
+
   return (
     <TodoMainWrapper>
       <Margin height="30px" />
       <Header>My Todo App</Header>
       <Margin height="50px" />
-      <AddForm
-        plusTodoText={plusTodoText}
-        setPlusTodoText={setPlusTodoText}
-        addBtnFun={() => {
-          addItem(plusTodoText, todoArr, setTodoArr, setPlusTodoText);
-        }}
-      ></AddForm>
+      <PlusTodoText.Provider value={plusTodoText}>
+        <SetPlusTodoText.Provider value={setPlusTodoText}>
+          <AddForm
+            addBtnFun={() => {
+              addItem(plusTodoText, todoArr, setTodoArr, setPlusTodoText);
+            }}
+          ></AddForm>
+        </SetPlusTodoText.Provider>
+      </PlusTodoText.Provider>
       <Margin height="20px" />
       {todoArr.map(({ todoItemId, todoText, isCompleted }) => (
         <TodoList
@@ -58,7 +43,7 @@ const MainPage = () => {
             deleteItem(todoItemId, todoArr, setTodoArr);
           }}
           completeItem={() => {
-            completeItem(todoItemId);
+            completeItem(todoItemId, isCompleted);
           }}
         >
           {todoText}
@@ -69,3 +54,11 @@ const MainPage = () => {
 };
 
 export default MainPage;
+
+const TodoMainWrapper = styled.div`
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
